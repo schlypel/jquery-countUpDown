@@ -1,7 +1,7 @@
 /*
  * jquery-countUpDown plugin
  *
- * Copyright (c) 2013 Philipp Roggan <philipp.roggan@web.de>
+ * Copyright (c) 2013 schlypel <schlypel@web.de>
  * Dual licensed under the MIT and GPL licenses.
  * http://docs.jquery.com/License
  */
@@ -10,12 +10,12 @@ jQuery.fn.myCounter = function(userOptions)
 	var wo = this;
 	wo.myOptions = {
 		autoStart: true,//if false, start() method has to be called to start counting @TODO
-		animate: false,//if true, digitImg has to have extra parts for the animated steps 
+		animate: false,//if true, digitImg has to have extra parts for the animated steps
 		counterDelay: 1000,//delay in miliseconds
 		daysDigits: 2,//select how many digits of days to display, max is 4 (9999 days)
 		digitWidth:53,//dimensions of each sprite in digitImg
 		digitHeight:77,
-		digitImg:'zahlen.png',//image containing sprites, left top is 0, downwards to 9, last row on bottom are the dividers.
+		digitImg:'digits.png',//image containing sprites, left top is 0, downwards to 9, last row on bottom are the dividers.
 		dividerStyle: 0,//check last row in digitImg, this number is the position of image in last row, starting with 0
 		counterDirection: 'up', //up or down
 		counterBottom: '2013-01-01 00:00:00',//if initState isn't set, either counterTop, counterBottom or both have to be set
@@ -23,7 +23,7 @@ jQuery.fn.myCounter = function(userOptions)
 		//initState: '0000:00:00:58' // Format: dddd:hh:mm:ss
 	};
 	$.extend(wo.myOptions, userOptions);//merge options with defaults
-	
+
 	/* Styles, will be put into head on loading */
 	var styles = '<style class="myCounterStyles" type="text/css">/*  MYCOUNTER STYLES */\
       '+wo.selector+' .myCounter{\
@@ -44,7 +44,7 @@ jQuery.fn.myCounter = function(userOptions)
       	width:28px;\
       }\
       </style>';
-      
+
     /* the html elements to be used */
     var container = $('<div class="myCounter myCounterContainer"></div>');
 	var s0 = $('<div class="myCounter myCounterDigit s0"></div>');
@@ -65,8 +65,8 @@ jQuery.fn.myCounter = function(userOptions)
 		container.prepend(daysArray[i]);
 	}
 	var digitsList = {d3:d3,d2:d2,d1:d1,d0:d0,h1:h1,h0:h0,m1:m1,m0:m0,s1:s1,s0:s0};
-	
-	
+
+
 	//this object will allways contain the state
 	wo.state = {v:{d3:0,d2:0,d1:0,d0:0,h1:0,h0:0,m1:0,m0:0,s1:0,s0:0},a:{d3:0,d2:0,d1:0,d0:0,h1:0,h0:0,m1:0,m0:0,s1:0,s0:0},
 		s0maxed : function(){return (wo.state.v.s0 > 8);},
@@ -82,7 +82,7 @@ jQuery.fn.myCounter = function(userOptions)
 		inc : function(){
 		//console.log(wo.state);
 			if (!wo.state.s0maxed()){
-				wo.state.v.s0 = ++wo.state.v.s0;	
+				wo.state.v.s0 = ++wo.state.v.s0;
 			}else{
 				wo.state.v.s0 = 0;
 				if (!wo.state.s1maxed()){
@@ -135,7 +135,7 @@ jQuery.fn.myCounter = function(userOptions)
 		dec : function(){
 		//console.log(wo.state);
 			if (wo.state.v.s0 > 0){
-				wo.state.v.s0 = --wo.state.v.s0;	
+				wo.state.v.s0 = --wo.state.v.s0;
 			}else{
 				wo.state.v.s0 = 9;
 				if (wo.state.v.s1 > 0){
@@ -187,7 +187,7 @@ jQuery.fn.myCounter = function(userOptions)
 			}
 		}
 	}
-	
+
 	/* adjusting digits background to reflect number*/
 	wo.setDigit = function(digit,opts){
 		var start = wo.state.a[digit];
@@ -205,7 +205,7 @@ jQuery.fn.myCounter = function(userOptions)
 			}
 		}
 	}
-	
+
 	/* setting all digits */
 	wo.setState = function(newState,opts){
 		wo.setDigit('s0',opts);
@@ -219,7 +219,7 @@ jQuery.fn.myCounter = function(userOptions)
 		wo.setDigit('d2',opts);
 		wo.setDigit('d3',opts);
 	}
-	
+
 	/* read options, set initial state of digits */
 	function initialize(opts){
 		if (opts.initState){
@@ -238,7 +238,7 @@ jQuery.fn.myCounter = function(userOptions)
 				wo.html('the counter needs to have either initState or at least one of counterTop/counterBottom to be set');
 			}else{
 				var now = new Date();
-				var ctop = (opts.counterTop)?Date.parse(opts.counterTop):now.getTime(); 
+				var ctop = (opts.counterTop)?Date.parse(opts.counterTop):now.getTime();
 				var cbottom = (opts.counterBottom)?Date.parse(opts.counterBottom):now.getTime();
 				var difference = Math.floor((ctop-cbottom)/1000);
 				if (difference < 0){difference = difference *(-1);}
@@ -263,7 +263,7 @@ jQuery.fn.myCounter = function(userOptions)
 		}
 		wo.setState(wo.state,opts);
 	}
-	
+
 	/* function to do the step to next number */
 	function step(){
 		//create a copy of all values, so we can tell where we come from for animation
@@ -283,7 +283,7 @@ jQuery.fn.myCounter = function(userOptions)
 			wo.state.dec();
 		}
 		wo.setState(wo.state, wo.myOptions);
-	} 
+	}
 
 	$('head').append(styles);//add the styles to sites head
 	wo.append(container);//print out the code into defined DOM element
