@@ -17,10 +17,10 @@ jQuery.fn.myCounter = function(userOptions)
 		digitHeight:77,
 		digitImg:'digits.png',//image containing sprites, left top is 0, downwards to 9, last row on bottom are the dividers.
 		dividerStyle: 0,//check last row in digitImg, this number is the position of image in last row, starting with 0
-		counterDirection: 'up', //up or down
-		counterBottom: '2013-01-01 00:00:00',//if initState isn't set, either counterTop, counterBottom or both have to be set
+		counterDirection: 'down', //up or down
+		//counterBottom: '2013-01-01 00:00:00',//if initState isn't set, either counterTop, counterBottom or both have to be set
 		//counterTop:'2013-04-07 16:00:00', //max difference is 27 years (9999 days max)
-		//initState: '0000:00:00:58' // Format: dddd:hh:mm:ss
+		initState: '0000:00:13:37' // Format: dddd:hh:mm:ss
 	};
 	$.extend(wo.myOptions, userOptions);//merge options with defaults
 
