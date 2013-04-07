@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Demo</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./jquery.myCounter.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#c1').myCounter({
+        	initState:'0021:02:03:03',
+        	animate:true,
+        	counterDelay:600,
+        	counterDirection:'up',
+        	daysDigits:1,
+        	dividerStyle:1,
+        	digitImg:"digits.png"
+        });
+        $('#c2').myCounter({
+        	animate:true,
+        	counterDelay:1000,
+        	counterDirection:'down',
+        	daysDigits:4,
+        	digitImg:"digits.png"
+        });
+      });
+    </script>
+  </head>
+<body>
+<p>Demo</p>
+<hr />
+<div id="c1"></div>
+<hr />
+<div id="c2"></div>
+</body></html>
